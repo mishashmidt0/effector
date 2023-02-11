@@ -3,7 +3,7 @@ import React from 'react';
 import cc from 'classcat';
 
 import { colors } from '@/constants/color';
-import { BallColor } from '@/store/game';
+import { BallColor } from '@/store/game-balls';
 
 type TubeProps = {
   onClick: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
@@ -16,13 +16,15 @@ type TubeProps = {
 };
 
 export const Tube = ({ tube, position, onClick }: TubeProps) => (
-  <button data-position={position} onClick={onClick}>
-    <div className='mb-1 flex justify-center'>{tube.over === null ? null : <Ball ball={tube.over} />}</div>
+  <button className='relative' data-position={position} onClick={onClick}>
+    <div className='absolute top-[-58px] left-2 mb-1 flex justify-center'>
+      {tube.over === null ? null : <Ball ball={tube.over} />}
+    </div>
 
     <div
       data-complete={tube.complete}
       className={cc([
-        'rounded-b-3xl border-2 border-solid  border-white p-2',
+        'flex h-full flex-col justify-end gap-1 rounded-b-3xl border-2  border-solid border-white p-2',
         { '!border-black bg-white': tube.complete },
       ])}
     >
