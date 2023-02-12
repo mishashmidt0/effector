@@ -36,5 +36,11 @@ export const Tube = ({ tube, position, onClick }: TubeProps) => (
 );
 
 const Ball = ({ ball }: { ball: BallColor | null }) => (
-  <div className={cc([`h-12 w-12 rounded-full border-2 border-solid border-black ${ball ? colors[ball] : ''}`])}></div>
+  <div
+    className={cc([
+      `h-12 w-12 rounded-full border-2 border-solid border-black ${
+        ball || ball === 0 ? colors[ball] : ''
+      }`,
+    ])}
+  ></div>
 );
